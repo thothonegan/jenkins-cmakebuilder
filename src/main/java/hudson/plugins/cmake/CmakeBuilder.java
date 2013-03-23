@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import java.util.Map;
 
 /**
  * Executes <tt>cmake</tt> as the build process.
@@ -150,11 +151,14 @@ public class CmakeBuilder extends Builder {
     	listener.getLogger().println("MODULE: " + build.getModuleRoot());
     	
         final EnvVars envs = build.getEnvironment(listener);
-//        final Set<String> keys = envs.keySet();
-//    	for (String key : keys) {
-//    		listener.getLogger().println("Key : " + key);
-//    		cmakeCall   = cmakeCall.replaceAll("\\$" + key, envs.get(key));
-//    	}
+
+		// thothonegan: Add build variables to our envs so we can use matrix configuration 
+		final Map<String,String> buildVariables = build.getBuildVariables();
+		for (String key : buildVariables.keySet())
+		{
+			listener.getLogger().println("BuildVar : " + key);
+			envs.put(key, buildVariables.get(key));
+		}
 
         final FilePath workSpace = build.getProject().getWorkspace();
         
