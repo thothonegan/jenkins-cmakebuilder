@@ -12,7 +12,7 @@
   <artifactId>cmakebuilder</artifactId>
   <name>Hudson CMake plugin</name>
   <packaging>hpi</packaging>
-  <version>1.10-SNAPSHOT</version>
+  <version>1.10-SNAPSHOT-thothonegan</version>
   <url>http://wiki.hudson-ci.org/display/HUDSON/cmakebuilder+Plugin</url>
   <scm>
    <connection>scm:svn:https://svn.jenkins-ci.org/trunk/hudson/plugins/cmakebuilder</connection>
