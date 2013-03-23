@@ -10,6 +10,9 @@ public class EnvVarReplacer {
     	for (String key : keys) {
     		stringContainingEnvVars = 
     			stringContainingEnvVars.replaceAll("\\$" + key, envVars.get(key));
+
+			stringContainingEnvVars =
+				stringContainingEnvVars.replaceAll("\\$\\{" + key + "\\}", envVars.get(key)); // bash style ${VAR}. Even though $VARblah works due to previous line, its not nice.
     	}
     	return stringContainingEnvVars;
 	}
